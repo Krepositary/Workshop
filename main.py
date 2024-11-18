@@ -1,10 +1,7 @@
-pip install -r requirements.txt
-
 import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
-import tempfile
 
 # Placeholder function for analyzing dog behavior
 def analyze_video(video_bytes):
@@ -14,7 +11,7 @@ def analyze_video(video_bytes):
     """
     actions_detected = []
     emotions_detected = []
-    # Mock actions and emotions based on the video input
+    # Mock actions and emotions
     actions_detected.append("Tail Wagging")
     emotions_detected.append("Excitement")
     return actions_detected, emotions_detected
