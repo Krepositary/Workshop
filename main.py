@@ -1,10 +1,12 @@
+
 import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
+import tempfile
 
 # Placeholder function for analyzing dog behavior
-def analyze_video(video_path):
+def analyze_video(video_bytes):
     """
     Analyzes the uploaded video to detect dog actions and emotions.
     This is a placeholder implementation; replace it with a real model.
@@ -30,17 +32,11 @@ def main():
     uploaded_video = st.file_uploader("Upload a video of your dog", type=["mp4", "avi", "mov"])
 
     if uploaded_video is not None:
-        # Display the uploaded video
         st.video(uploaded_video)
-        temp_video_path = "temp_video.mp4"
-        
-        # Save uploaded video temporarily for processing
-        with open(temp_video_path, "wb") as f:
-            f.write(uploaded_video.read())
-        
+
         # Analyze video and generate insights
         with st.spinner("Analyzing the video..."):
-            actions, emotions = analyze_video(temp_video_path)
+            actions, emotions = analyze_video(uploaded_video.read())
 
         # Display results
         st.success("Analysis Complete!")
